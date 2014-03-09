@@ -21,12 +21,13 @@ Usage
 
 ### API
 
-#### CoinKey([bytes], [compressed])
+#### CoinKey([bytes], [compressed], [versions])
 
 Constructor function.
 
-- **bytes**: The private key bytes. Must be 32 bytes in length. Should be an `Array`, `Uint8Array`, or a `Buffer`.
+- **bytes**: The private key bytes. Must be 32 bytes in length. Should be an `Array`, `Uint8Array`, or a `Buffer`. If not passed, one will be randomlyl generated.
 - **compressed**: Specify whether the key should be compressed or not.
+- **versions**: An object that specifies the public and private key versions for addresses and wifs. Defaults to Bitcoin `mainnet`.
 
 ```js
 var CoinKey = require('eckey');

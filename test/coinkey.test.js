@@ -24,6 +24,16 @@ describe('CoinKey', function() {
         EQ (ck3.compressed, true);
       })
     })
+
+    describe('> when one parameter', function() {
+      describe('> when bytes', function() {
+        it('should use defaults for rest', function() {
+          var privateKey = secureRandom(32);
+          var ck1 = new CoinKey(privateKey);
+          EQ (ck1.privateKey.toString('hex'), new Buffer(privateKey).toString('hex'));
+        })
+      })
+    })
   })
 
   /*describe('- privateKey', function() {
