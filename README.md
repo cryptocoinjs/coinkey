@@ -19,6 +19,10 @@ Installation
 Usage
 -----
 
+### Common Use Cases
+
+
+
 ### API
 
 #### CoinKey([bytes], [compressed], [versions])
@@ -30,7 +34,7 @@ Constructor function.
 - **versions**: An object that specifies the public and private key versions for addresses and wifs. Defaults to Bitcoin `mainnet`.
 
 ```js
-var CoinKey = require('eckey');
+var CoinKey = require('coinkey');
 var secureRandom = require('secure-random'); 
 
 var bytes = secureRandom(32); //https://github.com/jprichardson/secure-random
@@ -40,79 +44,25 @@ var compressedKey = new ECKey(bytes, true);
 ```
 
 
-
 #### compressed
 
-Get/set whether the point on the curve is compressed. Affects the output of the WIF (wallet import format) and the address.
+Inherited from [ECKey][eckey]. [eckey.compressed](https://github.com/cryptocoinjs/eckey#compressed)
 
 
 #### privateKey
 
-Get/set the private key. When setting, the type can be either an `Array`, `Buffer`, or `Uint8Array`. When getting, the type is always `Buffer`. Setting would be useful if you don't pass a private key to the constructor.
-
-```js
-var ECKey = require('eckey');
-var conv = require('binstring');
-
-var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd";
-
-var key = new ECKey(conv(privateKeyHex, {in: 'hex', out: 'buffer'}), false);
-console.log(key.privatekey.toString('hex')); // => 1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd
-
-var keyCompressed = ECKey(conv(privateKeyHex, {in: 'hex', out: 'buffer'}), true);
-
-//nothing changes when compressed
-console.log(key.privatekey.toString('hex')); // => 1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd
-```
+Inherited from [ECKey][eckey]. [eckey.privateKey](https://github.com/cryptocoinjs/eckey#privatekey)
 
 
 #### privateExportKey
 
-Get the private key along with a byte for compression if `compressed` is true. i.e.
-
-    if compressed
-      privateExportKey = privateKey + 0x01
-    else
-      privateExportKey = privateKey
-
-This is useful inconjunction with the package [coinstring](https://github.com/cryptocoinjs/coinstring) to generate
-[Wallet Import Format](https://en.bitcoin.it/wiki/Wallet_import_format) keys.
-
-```js
-var ECKey = require('eckey');
-var conv = require('binstring');
-
-var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd";
-
-var key = new ECKey(conv(privateKeyHex, {in: 'hex', out: 'buffer'}), false);
-console.log(key.privateExportKey.toString('hex')); // => 1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd
-
-var keyCompressed = new ECKey(conv(privateKeyHex, {in: 'hex', out: 'buffer'}), true);
-
-//notice the extra "01" at the end?
-console.log(key.privateExportKey.toString('hex')); // => 1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd01
-```
+Inherited from [ECKey][eckey]. [eckey.privateExportKey](https://github.com/cryptocoinjs/eckey#privateexportkey)
 
 
 #### publicKey
 
-Get the public key. The type is `Buffer`.
+Inherited from [ECKey][eckey]. [eckey.publicKey](https://github.com/cryptocoinjs/eckey#publickey)
 
-```js
-var ECKey = require('eckey');
-var conv = require('binstring');
-
-var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd";
-
-var key = new ECKey(conv(privateKeyHex, {in: 'hex', out: 'buffer'}), false);
-console.log(key.publickey.toString('hex')); 
-// => 04d0988bfa799f7d7ef9ab3de97ef481cd0f75d2367ad456607647edde665d6f6fbdd594388756a7beaf73b4822bc22d36e9bda7db82df2b8b623673eefc0b7495
-
-var keyCompressed = ECKey(conv(privateKeyHex, {in: 'hex', out: 'buffer'}), true);
-
-console.log(key.publickey.toString('hex')); 
-// => 03d0988bfa799f7d7ef9ab3de97ef481cd0f75d2367ad456607647edde665d6f6f
-```
 
 
 #### publicHash
@@ -122,16 +72,16 @@ Alias: `pubKeyHash`
 Get the public hash i.e. the ripemd160(sha256(publicKey))
 
 ```js
-var ECKey = require('eckey');
+var CoinKey = require('coinkey');
 var conv = require('binstring');
 
 var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd";
 
-var key = new ECKey(conv(privateKeyHex, {in: 'hex', out: 'buffer'}), false);
+var key = new CoinKey(conv(privateKeyHex, {in: 'hex', out: 'buffer'}), false);
 console.log(key.publicHash.toString('hex')) // => 3c176e659bea0f29a3e9bf7880c112b1b31b4dc8
 console.log(key.publKeyHash.toString('hex')) // => 3c176e659bea0f29a3e9bf7880c112b1b31b4dc8
 
-var keyCompressed = ECKey(conv(privateKeyHex, {in: 'hex', out: 'buffer'}), true);
+var keyCompressed = CoinKey(conv(privateKeyHex, {in: 'hex', out: 'buffer'}), true);
 console.log(key.publicHash.toString('hex')) // => a1c2f92a9dacbd2991c3897724a93f338e44bdc1
 console.log(key.publKeyHash.toString('hex')) // => a1c2f92a9dacbd2991c3897724a93f338e44bdc1
 ```

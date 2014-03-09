@@ -1,7 +1,6 @@
 var CoinKey = require('../')
 var conv = require('binstring')
 var secureRandom = require('secure-random')
-var ECKey = require('eckey');
 
 require('terst')
 
@@ -32,6 +31,30 @@ describe('CoinKey', function() {
           var ck1 = new CoinKey(privateKey);
           EQ (ck1.privateKey.toString('hex'), new Buffer(privateKey).toString('hex'));
         })
+      })
+    })
+
+    //TODO: add more tests for other params
+  })
+
+  describe('- publicHash', function() {
+    describe('> when not compressed', function() {
+      it('should return the 160 bit hash of the uncompressed public key', function() {
+        var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd";
+        var hash160Hex = "3c176e659bea0f29a3e9bf7880c112b1b31b4dc8";
+        var key = new CoinKey(conv(privateKeyHex, {in: 'hex', out: 'bytes'}), false);
+        EQ (key.publicHash.toString('hex'), hash160Hex);
+        EQ (key.pubKeyHash.toString('hex'), hash160Hex);
+      })
+    })
+
+    describe('> when compressed', function() {
+      it('should return the 160 bit hash of the compressed public key', function() {
+        var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd";
+        var hash160Hex = "a1c2f92a9dacbd2991c3897724a93f338e44bdc1";
+        var key = new CoinKey(conv(privateKeyHex, {in: 'hex', out: 'bytes'}), true);
+        EQ (key.publicHash.toString('hex'), hash160Hex);
+        EQ (key.pubKeyHash.toString('hex'), hash160Hex);
       })
     })
   })
