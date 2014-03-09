@@ -1,0 +1,28 @@
+{
+  "name": "coinkey",
+  "version": "0.0.1",
+  "description": "JavaScript component for private keys, public keys, and addresess for crypto currencies such as Bitcoin, Litecoin, and Dogecoin",
+  "keywords": [
+    "cryptography",
+    "crypto",
+    "bitcoin",
+    "litecoin",
+    "elliptical",
+    "curve"
+  ],
+  "devDependencies": {
+    "mocha": "1.*",
+    "terst": "~0.1.0",
+    "binstring": "~0.2.0"
+  },
+  "repository": {
+    "url": "https://github.com/cryptocoinjs/eckey",
+    "type": "git"
+  },
+  "main": "./lib/coinkey.js",
+  "dependencies": {
+    "coinstring": "~0.1.0",
+    "eckey": "~0.4.0",
+    "secure-random": "~0.2.0"
+  }
+}
