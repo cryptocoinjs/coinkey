@@ -21,7 +21,45 @@ Usage
 
 ### Common Use Cases
 
-(TODO)
+### Generate a Bunch of Bitcoin Keys/Addresses
+
+```js
+var CoinKey = require('coinkey');
+
+var bitcoinAddresses = [];
+
+for (var i = 0; i < 10; ++i) {
+  bitcoinAddresses.push(new CoinKey()); //Bitcoin supported by default
+}
+```
+
+
+#### Generate a Bunch of Namecoin Keys/Addresses
+
+```js
+var CoinKey = require('coinkey');
+var ci = require('coininfo');
+
+var namecoins = [];
+for (var i = 0; i < 10; ++i) {
+  namecoins.push(new CoinKey(ci('NMC').versions));
+}
+```
+
+
+#### Parse a Wallet Import Key and Determine Crypto Currency
+
+```js
+var ck = CoinKey.fromWif('QVD3x1RPiWPvyxbTsfxVwaYLyeBZrQvjhZ2aZJUsbuRgsEAGpNQ2');
+var ci = require('coininfo');
+
+console.log(ck.privateKey.toString('hex')) // => c4bbcb1fbec99d65bf59d85c8cb62ee2db963f0fe106f483d9afa73bd4e39a8a
+console.log(ck.publicAddress) // => DGG6AicS4Qg8Y3UFtcuwJqbuRZ3Q7WtYXv
+console.log(ck.compressed) // => true
+console.log(ck.versions.public === ci('DOGE').versions.public) // => true
+```
+
+
 
 ### API
 

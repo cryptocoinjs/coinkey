@@ -32,6 +32,16 @@ describe('CoinKey', function() {
           EQ (ck1.privateKey.toString('hex'), new Buffer(privateKey).toString('hex'));
         })
       })
+
+      describe('> when versions are passed', function() {
+        it('shoudl use the versions', function() {
+          var ck = new CoinKey({private: 0x34, public: 0xB4}); //<-- namecoin
+          EQ (ck.privateKey.length, 32);
+          T (ck.compressed);
+          EQ (ck.versions.private, 0x34);
+          EQ (ck.versions.public, 0xB4);
+        })
+      })
     })
 
     describe('> when two parameters', function() {
