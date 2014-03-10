@@ -136,5 +136,13 @@ describe('CoinKey', function() {
   })
 
 
+  describe('- toString()', function() {
+    it('should return the hex string of the privateKey', function() {
+      var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd";
+      var ck = new CoinKey(new Buffer(privateKeyHex, 'hex'));
+      EQ (ck.toString(), ck.privateKey.toString('hex'));
+    })
+  })
+
 
 });
