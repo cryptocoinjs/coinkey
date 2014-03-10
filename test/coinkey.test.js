@@ -25,11 +25,21 @@ describe('CoinKey', function() {
     })
 
     describe('> when one parameter', function() {
-      describe('> when bytes', function() {
+      describe('> when bytes exist', function() {
         it('should use defaults for rest', function() {
           var privateKey = secureRandom(32);
           var ck1 = new CoinKey(privateKey);
           EQ (ck1.privateKey.toString('hex'), new Buffer(privateKey).toString('hex'));
+        })
+      })
+    })
+
+    describe('> when two parameters', function() {
+      describe('> when compressed and versions are passed', function() {
+        it('should generate a random private key', function() {
+          var ck = new CoinKey(true, {private: 0x34, public: 0xB4}); //<-- namecoin
+          EQ (ck.privateKey.length, 32);
+          T (ck.compressed);
         })
       })
     })
