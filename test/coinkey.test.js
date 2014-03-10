@@ -37,6 +37,44 @@ describe('CoinKey', function() {
     //TODO: add more tests for other params
   })
 
+  describe('- privateWif', function() {
+    describe('> when Bitcoin', function() {
+      describe('> when not compressed', function() {
+        it('should return the uncompressed Bitcoin address', function() {
+          var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd";
+          var ck = new CoinKey(conv(privateKeyHex, {in: 'hex', out: 'buffer'}), false);
+          EQ (ck.privateWif, '5Hx15HFGyep2CfPxsJKe2fXJsCVn5DEiyoeGGF6JZjGbTRnqfiD');
+        })
+      })
+
+      describe('> when compressed', function() {
+        it('should return the compressed Bitcoin address', function() {
+          var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd";
+          var ck = new CoinKey(conv(privateKeyHex, {in: 'hex', out: 'buffer'}), true);
+          EQ (ck.privateWif, 'KwomKti1X3tYJUUMb1TGSM2mrZk1wb1aHisUNHCQXTZq5auC2qc3');
+        })
+      })
+    })
+
+    describe('> when Litecoin', function() {
+      describe('> when not compressed', function() {
+        it('should return the uncompressed Bitcoin address', function() {
+          var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd";
+          var ck = new CoinKey(conv(privateKeyHex, {in: 'hex', out: 'buffer'}), false, {private: 0xB0, public: 0x30});
+          EQ (ck.privateWif, '6uFjYQnot5Gtg3HpP87bp4JUpg4FH1gkkV3RyS7LHBbD9Hpt1na');
+        })
+      })
+
+      describe('> when compressed', function() {
+        it('should return the compressed Bitcoin address', function() {
+          var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd";
+          var ck = new CoinKey(conv(privateKeyHex, {in: 'hex', out: 'buffer'}), true, {private: 0xB0, public: 0x30});
+          EQ (ck.privateWif, 'T3e2me1BvRs95K7E8eQ8eha9oRPL1g2U6vmjE5px6RjzbUTvKZsf');
+        })
+      })
+    })
+  })
+
   describe('- publicHash', function() {
     describe('> when not compressed', function() {
       it('should return the 160 bit hash of the uncompressed public key', function() {

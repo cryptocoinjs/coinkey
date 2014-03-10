@@ -71,11 +71,11 @@ var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08
 
 //Bitcoin WIF
 var key = new CoinKey(conv(privateKeyHex, {in: 'hex', out: 'buffer'}), false);
-console.log(key.privateWif) // => 16UjcYNBG9GTK4uq2f7yYEbuifqCzoLMGS
+console.log(key.privateWif) // => 5Hx15HFGyep2CfPxsJKe2fXJsCVn5DEiyoeGGF6JZjGbTRnqfiD
 
 //Litecoin WIF
 var key = new CoinKey(conv(privateKeyHex, {in: 'hex', out: 'buffer'}), false, {private: 0xB0, public: 0x30});
-console.log(key.privateWif) // => 16UjcYNBG9GTK4uq2f7yYEbuifqCzoLMGS
+console.log(key.privateWif) // => 6uFjYQnot5Gtg3HpP87bp4JUpg4FH1gkkV3RyS7LHBbD9Hpt1na
 ```
 
 
