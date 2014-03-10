@@ -59,96 +59,43 @@ describe('CoinKey', function() {
     })
   })
 
-  /*describe('- privateKey', function() {
-    it('should return the private key', function() {
-      var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd";
-      var key = new ECKey(conv(privateKeyHex, {in: 'hex', out: 'bytes'}));
-      EQ (key.privateKey.toString('hex'), privateKeyHex);
-    })
-  })
+  describe('- publicAddress', function() {
+    describe('> when Bitcoin', function() {
+      describe('> when not compressed', function() {
+        it('should return the uncompressed Bitcoin address', function() {
+          var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd";
+          var ck = new CoinKey(conv(privateKeyHex, {in: 'hex', out: 'buffer'}), false);
+          EQ (ck.publicAddress, '16UjcYNBG9GTK4uq2f7yYEbuifqCzoLMGS');
+        })
+      })
 
-  describe('- privateExportKey', function() {
-    describe('> when not compressed', function() {
-      it('should return the private key', function() {
-        var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd";
-        var key = new ECKey(conv(privateKeyHex, {in: 'hex', out: 'buffer'}), false);
-        EQ (key.privateExportKey.toString('hex'), privateKeyHex);
+      describe('> when compressed', function() {
+        it('should return the compressed Bitcoin address', function() {
+          var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd";
+          var ck = new CoinKey(conv(privateKeyHex, {in: 'hex', out: 'buffer'}), true);
+          EQ (ck.publicAddress, '1FkKMsKNJqWSDvTvETqcCeHcUQQ64kSC6s');
+        })
       })
     })
 
-    describe('> when compressed', function() {
-      it('should return the private key', function() {
-        var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd";
-        var key = new ECKey(conv(privateKeyHex, {in: 'hex', out: 'buffer'}), true);
-        EQ (key.compressed, true);
-        EQ (key.privateExportKey.toString('hex'), privateKeyHex + "01");
+    describe('> when Litecoin', function() {
+      describe('> when not compressed', function() {
+        it('should return the uncompressed Bitcoin address', function() {
+          var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd";
+          var ck = new CoinKey(conv(privateKeyHex, {in: 'hex', out: 'buffer'}), false, {private: 0xB0, public: 0x30});
+          EQ (ck.publicAddress, 'LQhgskg1LoWWZsbzCo7GpFffvtCV8Z5GKZ');
+        })
       })
-    })
-  })
 
-  describe('- publicKey', function() {
-    describe('> when not compressed', function() {
-      it('should return the 65 byte public key', function() {
-        var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd";
-        var publicKeyHex = "04d0988bfa799f7d7ef9ab3de97ef481cd0f75d2367ad456607647edde665d6f6fbdd594388756a7beaf73b4822bc22d36e9bda7db82df2b8b623673eefc0b7495";
-        var key = new ECKey(conv(privateKeyHex, {in: 'hex', out: 'bytes'}), false);
-        EQ (key.publicKey.length, 65);
-        EQ (key.publicKey.toString('hex'), publicKeyHex);
-      })
-    })
-
-    describe('> when compressed', function() {
-      it('should return the 33 byte public key', function() {
-        var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd";
-        var publicKeyHex = "03d0988bfa799f7d7ef9ab3de97ef481cd0f75d2367ad456607647edde665d6f6f";
-        var key = new ECKey(conv(privateKeyHex, {in: 'hex', out: 'bytes'}), true);
-
-        T (key.compressed);
-        EQ (key.publicKey.length, 33);
-        EQ (key.publicKey.toString('hex'), publicKeyHex);
+      describe('> when compressed', function() {
+        it('should return the compressed Bitcoin address', function() {
+          var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd";
+          var ck = new CoinKey(conv(privateKeyHex, {in: 'hex', out: 'buffer'}), true, {private: 0xB0, public: 0x30});
+          EQ (ck.publicAddress, 'LZyGd5dCPVkVUjA5QbpuUfMNgcmNDLjswH');
+        })
       })
     })
   })
-
-  describe('- publicHash', function() {
-    describe('> when not compressed', function() {
-      it('should return the 160 bit hash of the uncompressed public key', function() {
-        var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd";
-        var hash160Hex = "3c176e659bea0f29a3e9bf7880c112b1b31b4dc8";
-        var key = new ECKey(conv(privateKeyHex, {in: 'hex', out: 'bytes'}), false);
-        EQ (key.publicHash.toString('hex'), hash160Hex);
-        EQ (key.pubKeyHash.toString('hex'), hash160Hex);
-      })
-    })
-
-    describe('> when compressed', function() {
-      it('should return the 160 bit hash of the compressed public key', function() {
-        var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd";
-        var hash160Hex = "a1c2f92a9dacbd2991c3897724a93f338e44bdc1";
-        var key = new ECKey(conv(privateKeyHex, {in: 'hex', out: 'bytes'}), true);
-        EQ (key.publicHash.toString('hex'), hash160Hex);
-        EQ (key.pubKeyHash.toString('hex'), hash160Hex);
-      })
-    })
-  })
-
-  describe('- publicPoint', function() {
-    it('should return the point object', function() {
-      var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd";
-      var key = new ECKey(conv(privateKeyHex, {in: 'hex', out: 'bytes'}), false);
-      T (key.publicPoint);
-    })
-  })
-
-
-  describe('- toString()', function() {
-    it('should show the string representation in...', function() {
-      var privateKeyBytes = conv("1184CD2CDD640CA42CFC3A091C51D549B2F016D454B2774019C2B2D2E08529FD", {in: 'hex', out: 'bytes'})
-      var eckey = new ECKey(privateKeyBytes)
-      var s = eckey.toString()
-      EQ (s, '1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd')
-    })
-  })*/
 
 
 

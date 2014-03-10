@@ -59,10 +59,49 @@ Inherited from [ECKey][eckey]. [eckey.privateKey](https://github.com/cryptocoinj
 Inherited from [ECKey][eckey]. [eckey.privateExportKey](https://github.com/cryptocoinjs/eckey#privateexportkey)
 
 
+#### privateWif
+
+Get the private WIF (Wallet Import Format).
+
+```js
+var CoinKey = require('coinkey');
+var conv = require('binstring');
+
+var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd";
+
+//Bitcoin WIF
+var key = new CoinKey(conv(privateKeyHex, {in: 'hex', out: 'buffer'}), false);
+console.log(key.privateWif) // => 16UjcYNBG9GTK4uq2f7yYEbuifqCzoLMGS
+
+//Litecoin WIF
+var key = new CoinKey(conv(privateKeyHex, {in: 'hex', out: 'buffer'}), false, {private: 0xB0, public: 0x30});
+console.log(key.privateWif) // => 16UjcYNBG9GTK4uq2f7yYEbuifqCzoLMGS
+```
+
+
 #### publicKey
 
 Inherited from [ECKey][eckey]. [eckey.publicKey](https://github.com/cryptocoinjs/eckey#publickey)
 
+
+#### publicAddress
+
+Get the public address.
+
+```js
+var CoinKey = require('coinkey');
+var conv = require('binstring');
+
+var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd";
+
+//Bitcoin Address
+var key = new CoinKey(conv(privateKeyHex, {in: 'hex', out: 'buffer'}), false);
+console.log(key.publicAddress) // => 16UjcYNBG9GTK4uq2f7yYEbuifqCzoLMGS
+
+//Litecoin Address
+var key = new CoinKey(conv(privateKeyHex, {in: 'hex', out: 'buffer'}), false, {private: 0xB0, public: 0x30});
+console.log(key.publicAddress) // => 16UjcYNBG9GTK4uq2f7yYEbuifqCzoLMGS
+```
 
 
 #### publicHash
@@ -89,22 +128,13 @@ console.log(key.publKeyHash.toString('hex')) // => a1c2f92a9dacbd2991c3897724a93
 
 #### publicPoint
 
-Get the [Public Key Point](https://github.com/cryptocoinjs/ecurve/blob/master/lib/ecurve.js) on the Ellipitical Curve. 
+Inherited from [ECKey][eckey]. [eckey.publicPoint](https://github.com/cryptocoinjs/eckey#publicpoint)
 
 
 #### toString()
 
 Returns the string representation of the private key.
 
-```js
-var ECKey = require('eckey');
-var conv = require('binstring');
-
-var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd";
-var key = new ECKey(conv(privateKeyHex, {in: 'hex', out: 'buffer'}), true);
-
-console.log(key.toString()) // => 1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd
-```
 
 
 
