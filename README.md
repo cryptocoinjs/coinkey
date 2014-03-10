@@ -39,9 +39,12 @@ var secureRandom = require('secure-random');
 
 var bytes = secureRandom(32); //https://github.com/jprichardson/secure-random
 var key1 = new ECKey(bytes);
-var key2 = ECKey(bytes); //<--- can also use without "new"
-var compressedKey = new ECKey(bytes, true);
+var key2 = CoinKey(bytes); //<--- can also use without "new"
+var compressedKey = new CoinKey(bytes, true);
 ```
+
+
+### Properties
 
 
 #### compressed
@@ -135,6 +138,19 @@ Inherited from [ECKey][eckey]. [eckey.publicPoint](https://github.com/cryptocoin
 
 Returns the string representation of the private key.
 
+
+### Methods
+
+#### fromWif(wif, [versions])
+
+Class method to create a `CoinKey` from a wif.
+
+```js
+var ck = CoinKey.fromWif('KwomKti1X3tYJUUMb1TGSM2mrZk1wb1aHisUNHCQXTZq5auC2qc3');
+console.log(ck.compressed); // => true
+console.log(ck.privateKey.toString('hex')) // => 1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd
+console.log(ck.publicAddress); // => 1FkKMsKNJqWSDvTvETqcCeHcUQQ64kSC6s
+```
 
 
 

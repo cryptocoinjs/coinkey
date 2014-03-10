@@ -21,7 +21,7 @@
   },
   "main": "./lib/coinkey.js",
   "dependencies": {
-    "coinstring": "~0.1.0",
+    "coinstring": "~0.2.0",
     "eckey": "~0.4.0",
     "secure-random": "~0.2.0"
   }

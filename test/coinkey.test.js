@@ -145,4 +145,46 @@ describe('CoinKey', function() {
   })
 
 
+  describe('+ fromWif()', function() {
+    describe('> when Bitcoin', function() {
+      describe('> when compressed', function() {
+        it('should create a new compressed CoinKey', function() {
+          var ck = CoinKey.fromWif('KwomKti1X3tYJUUMb1TGSM2mrZk1wb1aHisUNHCQXTZq5auC2qc3');
+          EQ (ck.compressed, true);
+          EQ (ck.privateKey.toString('hex'), "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd");
+          EQ (ck.publicAddress, "1FkKMsKNJqWSDvTvETqcCeHcUQQ64kSC6s");
+        })
+      })
+
+      describe('> when not compressed', function() {
+        it('should create a new compressed CoinKey', function() {
+          var ck = CoinKey.fromWif('5Hx15HFGyep2CfPxsJKe2fXJsCVn5DEiyoeGGF6JZjGbTRnqfiD');
+          EQ (ck.compressed, false);
+          EQ (ck.privateKey.toString('hex'), "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd");
+          EQ (ck.publicAddress, '16UjcYNBG9GTK4uq2f7yYEbuifqCzoLMGS');
+        })
+      })
+    })
+
+    describe('> when Namecoin', function() {
+      describe('> when compressed', function() {
+        it('should create a new compressed CoinKey', function() {
+          var ck = CoinKey.fromWif('TdxZ4HSnd3XgyPAJLwyhqPx6oABwMM7NkhGFTuDL4LkqioDbkZWj');
+          EQ (ck.compressed, true);
+          EQ (ck.privateKey.toString('hex'), "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd");
+          EQ (ck.publicAddress, "NBKgZWpMEDbzkTiRWHABRASXCdo8zWM8qC");
+        })
+      })
+
+      describe('> when not compressed', function() {
+        it('should create a new compressed CoinKey', function() {
+          var ck = CoinKey.fromWif('732iFLawHmyoDKce1SbbdLhaV8X7sq4Fu3Krx2rvFocm7qNwwiQ');
+          EQ (ck.compressed, false);
+          EQ (ck.privateKey.toString('hex'), "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd");
+          EQ (ck.publicAddress, 'N246pBsABXN1qcALJUSYkkkpSuEG3KTTGR');
+        })
+      })
+    })
+  })
+
 });
