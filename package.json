@@ -16,7 +16,7 @@
     "binstring": "~0.2.0"
   },
   "repository": {
-    "url": "https://github.com/cryptocoinjs/eckey",
+    "url": "https://github.com/cryptocoinjs/coinkey",
     "type": "git"
   },
   "main": "./lib/coinkey.js",
