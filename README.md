@@ -50,8 +50,10 @@ for (var i = 0; i < 10; ++i) {
 #### Parse a Wallet Import Key and Determine Crypto Currency
 
 ```js
-var ck = CoinKey.fromWif('QVD3x1RPiWPvyxbTsfxVwaYLyeBZrQvjhZ2aZJUsbuRgsEAGpNQ2');
+var CoinKey = require('coinkey');
 var ci = require('coininfo');
+
+var ck = CoinKey.fromWif('QVD3x1RPiWPvyxbTsfxVwaYLyeBZrQvjhZ2aZJUsbuRgsEAGpNQ2');
 
 console.log(ck.privateKey.toString('hex')) // => c4bbcb1fbec99d65bf59d85c8cb62ee2db963f0fe106f483d9afa73bd4e39a8a
 console.log(ck.publicAddress) // => DGG6AicS4Qg8Y3UFtcuwJqbuRZ3Q7WtYXv
@@ -59,6 +61,20 @@ console.log(ck.compressed) // => true
 console.log(ck.versions.public === ci('DOGE').versions.public) // => true
 ```
 
+#### Change to Testnet Later
+
+```js
+var CoinKey = require('coinkey');
+var ci = require('coininfo');
+
+var ck = new CoinKey(new Buffer('1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd', 'hex'));
+console.log(ck.publicAddress); // => 16UjcYNBG9GTK4uq2f7yYEbuifqCzoLMGS
+
+//change to Testnet
+ck.versions = ci('TEST');
+
+console.log(ck.publicAddress); // => mkzgubTA5Ahi6BPSkE6MN9pEafRutznkMe
+```
 
 
 ### API
@@ -189,6 +205,32 @@ console.log(ck.compressed); // => true
 console.log(ck.privateKey.toString('hex')) // => 1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd
 console.log(ck.publicAddress); // => 1FkKMsKNJqWSDvTvETqcCeHcUQQ64kSC6s
 ```
+
+
+Browser Support
+---------------
+
+Clone the repo:
+
+    git clone https://github.com/cryptocoinjs/coinkey
+
+Install Browserify
+
+    npm install -g browserify
+
+Nav to repo:
+
+    cd coinkey
+
+Install dependencies:
+
+    npm install
+
+Run browserify:
+
+    browserify --standalone coinkey < lib/coinkey.js > lib/coinkey.bundle.js
+
+You can now drop `coinkey.bundle.js` in a `<script>` tag.
 
 
 
