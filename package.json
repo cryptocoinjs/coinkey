@@ -11,9 +11,10 @@
     "curve"
   ],
   "devDependencies": {
-    "mocha": "1.*",
+    "mocha": "~1.17.1",
     "terst": "~0.1.0",
-    "binstring": "~0.2.0"
+    "binstring": "~0.2.0",
+    "mochify": "~0.5.0"
   },
   "repository": {
     "url": "https://github.com/cryptocoinjs/coinkey",
