@@ -4,7 +4,6 @@ var secureRandom = require('secure-random')
 
 require('terst')
 
-
 describe('CoinKey', function() {
   describe('+ CoinKey()', function() {
     describe('> when no parameters', function() {
@@ -21,6 +20,7 @@ describe('CoinKey', function() {
         CoinKey.compressByDefault = true;
         var ck3 = new CoinKey();
         EQ (ck3.compressed, true);
+        CoinKey.compressByDefault = false; //<-- restore default preference
       })
     })
 
@@ -34,10 +34,10 @@ describe('CoinKey', function() {
       })
 
       describe('> when versions are passed', function() {
-        it('shoudl use the versions', function() {
+        it('should use the versions', function() {
           var ck = new CoinKey({private: 0x34, public: 0xB4}); //<-- namecoin
           EQ (ck.privateKey.length, 32);
-          T (ck.compressed);
+          F (ck.compressed);
           EQ (ck.versions.private, 0x34);
           EQ (ck.versions.public, 0xB4);
         })
@@ -151,6 +151,41 @@ describe('CoinKey', function() {
           var ck = new CoinKey(conv(privateKeyHex, {in: 'hex', out: 'buffer'}), true, {private: 0xB0, public: 0x30});
           EQ (ck.publicAddress, 'LZyGd5dCPVkVUjA5QbpuUfMNgcmNDLjswH');
         })
+      })
+    })
+  })
+
+  describe('- versions', function() {
+    describe('> when object changes', function() {
+      it('should change the wif and public address', function() {
+        var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd";
+        var ck = new CoinKey(new Buffer(privateKeyHex, 'hex'), true);
+
+        EQ (ck.privateWif, 'KwomKti1X3tYJUUMb1TGSM2mrZk1wb1aHisUNHCQXTZq5auC2qc3');
+        EQ (ck.publicAddress, '1FkKMsKNJqWSDvTvETqcCeHcUQQ64kSC6s');
+
+        ck.versions = {public: 0x1E, private: 0x9E}; //change to DOGECOIN
+
+        EQ (ck.privateWif, 'QPCgUjWzmfNfXzsQBHJ4KZsPKbmaz99PAyZP9ubFFpBBXWuSQh6n');
+        EQ (ck.publicAddress, 'DKtQu8G1cFQikveWy3qAkQTDMY8PKVU18Z');
+    
+      })
+    })
+
+    describe('> when field changes', function() {
+      it('should change the wif and public address', function() {
+        var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd";
+        var ck = new CoinKey(new Buffer(privateKeyHex, 'hex'), true);
+
+        EQ (ck.privateWif, 'KwomKti1X3tYJUUMb1TGSM2mrZk1wb1aHisUNHCQXTZq5auC2qc3');
+        EQ (ck.publicAddress, '1FkKMsKNJqWSDvTvETqcCeHcUQQ64kSC6s');
+
+        //change to DOGECOIN
+        ck.versions.public = 0x1E;
+        ck.versions.private = 0x9E; 
+
+        EQ (ck.privateWif, 'QPCgUjWzmfNfXzsQBHJ4KZsPKbmaz99PAyZP9ubFFpBBXWuSQh6n');
+        EQ (ck.publicAddress, 'DKtQu8G1cFQikveWy3qAkQTDMY8PKVU18Z');
       })
     })
   })
