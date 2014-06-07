@@ -3,8 +3,9 @@ next version / 2014-06-xx
 * added `mochify` as a dev dep
 * removed semicolons per http://cryptocoinjs.com/about/contributing/#semicolons
 * removed `terst` and moved to `assert`
-* upgrade `"eckey": "~0.4.0"` to `"eckey": "^0.6.0"`
+* upgraded `"eckey": "~0.4.0"` to `"eckey": "^0.6.0"`
 * deleted fields `pubKeyHash` and alias `publicHash` because they're now present in inherited `ECKey`
+* upgraded `"coinstring": "~0.2.0"` to `"coinstring": "^1.0.1"`
 
 0.1.0 / 2014-03-10
 ------------------
