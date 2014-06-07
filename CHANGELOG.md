@@ -7,6 +7,7 @@ next version / 2014-06-xx
 * deleted fields `pubKeyHash` and alias `publicHash` because they're now present in inherited `ECKey`
 * upgraded `"coinstring": "~0.2.0"` to `"coinstring": "^1.0.1"`
 * upgraded `"secure-random": "~0.2.0"` to `"secure-random": "^1.0.0"`
+* removed `CoinKey.compressByDefault`, default is now `true`
 
 0.1.0 / 2014-03-10
 ------------------

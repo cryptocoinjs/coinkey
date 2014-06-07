@@ -15,11 +15,7 @@ describe('CoinKey', function() {
 
         assert.notEqual(ck1.privateKey.toString('hex'), ck2.privateKey.toString('hex'))
 
-        assert.equal(ck1.compressed, false)
-        CoinKey.compressByDefault = true
-        var ck3 = new CoinKey()
-        assert.equal(ck3.compressed, true)
-        CoinKey.compressByDefault = false //<-- restore default preference
+        assert.equal(ck1.compressed, true)
       })
     })
 
@@ -36,7 +32,7 @@ describe('CoinKey', function() {
         it('should use the versions', function() {
           var ck = new CoinKey({private: 0x34, public: 0xB4}) //<-- namecoin
           assert.equal(ck.privateKey.length, 32)
-          assert(!ck.compressed)
+          assert(ck.compressed)
           assert.equal(ck.versions.private, 0x34)
           assert.equal(ck.versions.public, 0xB4)
         })
