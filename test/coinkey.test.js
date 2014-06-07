@@ -10,10 +10,10 @@ describe('CoinKey', function() {
         var ck1 = new CoinKey()
         var ck2 = new CoinKey()
 
-        assert.equal(ck1.privateKey.length, 32)
-        assert.equal(ck2.privateKey.length, 32)
+        assert.equal(ck1.privateKey, undefined)
+        assert.equal(ck2.privateKey, undefined)
 
-        assert.notEqual(ck1.privateKey.toString('hex'), ck2.privateKey.toString('hex'))
+        //assert.notEqual(ck1.privateKey.toString('hex'), ck2.privateKey.toString('hex'))
 
         assert.equal(ck1.compressed, true)
       })
@@ -31,7 +31,7 @@ describe('CoinKey', function() {
       describe('> when versions are passed', function() {
         it('should use the versions', function() {
           var ck = new CoinKey({private: 0x34, public: 0xB4}) //<-- namecoin
-          assert.equal(ck.privateKey.length, 32)
+          assert.equal(ck.privateKey, undefined)
           assert(ck.compressed)
           assert.equal(ck.versions.private, 0x34)
           assert.equal(ck.versions.public, 0xB4)
@@ -43,7 +43,7 @@ describe('CoinKey', function() {
       describe('> when compressed and versions are passed', function() {
         it('should generate a random private key', function() {
           var ck = new CoinKey(true, {private: 0x34, public: 0xB4}) //<-- namecoin
-          assert.equal(ck.privateKey.length, 32)
+          assert.equal(ck.privateKey, undefined)
           assert(ck.compressed)
         })
       })
