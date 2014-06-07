@@ -5,15 +5,36 @@
       "privateWif": "5Hx15HFGyep2CfPxsJKe2fXJsCVn5DEiyoeGGF6JZjGbTRnqfiD",
       "privateWifCompressed": "KwomKti1X3tYJUUMb1TGSM2mrZk1wb1aHisUNHCQXTZq5auC2qc3",
       "publicAddress": "16UjcYNBG9GTK4uq2f7yYEbuifqCzoLMGS",
-      "publidAddressCompressed": "1FkKMsKNJqWSDvTvETqcCeHcUQQ64kSC6s",
+      "publicAddressCompressed": "1FkKMsKNJqWSDvTvETqcCeHcUQQ64kSC6s",
+      "versions": {"private": 128, "public": 0},
       "description": "bitcoin"
     },
     {
       "privateKey": "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd",
       "privateWif": "6uFjYQnot5Gtg3HpP87bp4JUpg4FH1gkkV3RyS7LHBbD9Hpt1na",
       "privateWifCompressed": "T3e2me1BvRs95K7E8eQ8eha9oRPL1g2U6vmjE5px6RjzbUTvKZsf",
+      "publicAddress": "LQhgskg1LoWWZsbzCo7GpFffvtCV8Z5GKZ",
+      "publicAddressCompressed": "LZyGd5dCPVkVUjA5QbpuUfMNgcmNDLjswH",
       "versions": {"private": 176, "public": 48},
       "description": "litecoin"
+    },
+    {
+      "privateKey": "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd",
+      "privateWif": "6JGLNEiEYR6pFGq84gwceHWYLcyKaLWzaymVajjCPPUEGAR2MTT",
+      "privateWifCompressed": "QPCgUjWzmfNfXzsQBHJ4KZsPKbmaz99PAyZP9ubFFpBBXWuSQh6n",
+      "publicAddress": "DAcq9oJpZZAjr56RmF7Y5zmWboZWQ4HAsW",
+      "publicAddressCompressed": "DKtQu8G1cFQikveWy3qAkQTDMY8PKVU18Z",
+      "versions": {"private": 158, "public": 30},
+      "description": "dogecoin"
+    },
+    {
+      "privateKey": "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd",
+      "privateWif": "732iFLawHmyoDKce1SbbdLhaV8X7sq4Fu3Krx2rvFocm7qNwwiQ",
+      "privateWifCompressed": "TdxZ4HSnd3XgyPAJLwyhqPx6oABwMM7NkhGFTuDL4LkqioDbkZWj",
+      "publicAddress": "N246pBsABXN1qcALJUSYkkkpSuEG3KTTGR",
+      "publicAddressCompressed": "NBKgZWpMEDbzkTiRWHABRASXCdo8zWM8qC",
+      "versions": {"private": 180, "public": 52},
+      "description": "namecoin"
     }
   ]
 }
