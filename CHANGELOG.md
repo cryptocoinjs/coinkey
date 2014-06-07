@@ -8,11 +8,12 @@ next version / 2014-06-xx
 * upgraded `"coinstring": "~0.2.0"` to `"coinstring": "^1.0.1"`
 * upgraded `"secure-random": "~0.2.0"` to `"secure-random": "^1.0.0"`
 * removed `CoinKey.compressByDefault`, default is now `true`
-* removed ability for `CoinKey` constructor to generate random key when `bytes` aren't passed
+* removed ability for `CoinKey` constructor to generate random key when `privateKey` aren't passed
 * removed `binstring` dev dep
 * added Travis CI
 * added Coveralls
 * added new class method `createRandom()`
+* changed constructor signature from `CoinKey([privateKey], [compresssed], [versions])` to `CoinKey(privateKey, [versions])`
 
 0.1.0 / 2014-03-10
 ------------------

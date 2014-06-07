@@ -12,8 +12,6 @@ describe('CoinKey', function() {
         var ck = new CoinKey(privateKey)
         assert(ck.compressed)
         assert.equal(ck.privateKey.toString('hex'), privateKey.toString('hex'))
-        ck = new CoinKey(privateKey, false)
-        assert(!ck.compressed)
       })
     })
 
@@ -28,8 +26,6 @@ describe('CoinKey', function() {
     describe('> when no private key', function() {
       it('should throw an error', function() {
         assert.throws(function() { var ck = new CoinKey() },/pass a private key/)
-        assert.throws(function() { var ck = new CoinKey(false) },/pass a private key/)
-        assert.throws(function() { var ck = new CoinKey(false, {public: 0, private: 0x80}) },/pass a private key/)
         assert.throws(function() { var ck = new CoinKey({public: 0, private: 0x80}) },/pass a private key/)
       })
     })
@@ -38,9 +34,10 @@ describe('CoinKey', function() {
   describe('- privateWif', function() {
     fixtures.valid.forEach(function(f) {
       it('should return the proper wif for ' + f.description, function() {
-        var ck = new CoinKey(new Buffer(f.privateKey, 'hex'), false, f.versions)
+        var ck = new CoinKey(new Buffer(f.privateKey, 'hex'), f.versions)
+        ck.compressed = false
         assert.equal(ck.privateWif, f.privateWif)
-        var ckCompressed = new CoinKey(new Buffer(f.privateKey, 'hex'), true, f.versions)
+        var ckCompressed = new CoinKey(new Buffer(f.privateKey, 'hex'), f.versions)
         assert.equal(ckCompressed.privateWif, f.privateWifCompressed)
       })
     })
@@ -49,9 +46,10 @@ describe('CoinKey', function() {
   describe('- publicAddress', function() {
     fixtures.valid.forEach(function(f) {
       it('should return the proper public address for ' + f.description, function() {
-        var ck = new CoinKey(new Buffer(f.privateKey, 'hex'), false, f.versions)
+        var ck = new CoinKey(new Buffer(f.privateKey, 'hex'), f.versions)
+        ck.compressed = false
         assert.equal(ck.publicAddress, f.publicAddress)
-        var ckCompressed = new CoinKey(new Buffer(f.privateKey, 'hex'), true, f.versions)
+        var ckCompressed = new CoinKey(new Buffer(f.privateKey, 'hex'), f.versions)
         assert.equal(ckCompressed.publicAddress, f.publicAddressCompressed)
       })
     })
@@ -61,9 +59,10 @@ describe('CoinKey', function() {
   describe('- toString()', function() {
     fixtures.valid.forEach(function(f) {
       it('should return the string ' + f.description, function() {
-        var ck = new CoinKey(new Buffer(f.privateKey, 'hex'), false, f.versions)
+        var ck = new CoinKey(new Buffer(f.privateKey, 'hex'), f.versions)
+        ck.compressed = false
         assert.equal(ck.toString(), f.privateWif + ': ' + f.publicAddress)
-        var ckCompressed = new CoinKey(new Buffer(f.privateKey, 'hex'), true, f.versions)
+        var ckCompressed = new CoinKey(new Buffer(f.privateKey, 'hex'), f.versions)
         assert.equal(ckCompressed.toString(), f.privateWifCompressed + ': ' + f.publicAddressCompressed)
       })
     })
@@ -95,7 +94,7 @@ describe('CoinKey', function() {
         var bitcoin = fixtures.valid.filter(function(f) { if (f.description.match(/bitcoin/)) return f })[0]
         var dogecoin = fixtures.valid.filter(function(f) { if (f.description.match(/bitcoin/)) return f })[0]
 
-        var ck = new CoinKey(new Buffer(bitcoin.privateKey, 'hex'), true)
+        var ck = new CoinKey(new Buffer(bitcoin.privateKey, 'hex'))
         assert.equal(ck.privateWif, bitcoin.privateWifCompressed)
         assert.equal(ck.publicAddress, bitcoin.publicAddressCompressed)
 
@@ -112,7 +111,7 @@ describe('CoinKey', function() {
         var bitcoin = fixtures.valid.filter(function(f) { if (f.description.match(/bitcoin/)) return f })[0]
         var dogecoin = fixtures.valid.filter(function(f) { if (f.description.match(/bitcoin/)) return f })[0]
 
-        var ck = new CoinKey(new Buffer(bitcoin.privateKey, 'hex'), true)
+        var ck = new CoinKey(new Buffer(bitcoin.privateKey, 'hex'))
         assert.equal(ck.privateWif, bitcoin.privateWifCompressed)
         assert.equal(ck.publicAddress, bitcoin.publicAddressCompressed)
 
