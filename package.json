@@ -12,7 +12,6 @@
   ],
   "devDependencies": {
     "mocha": "~1.17.1",
-    "binstring": "~0.2.0",
     "mochify": "~0.5.0"
   },
   "repository": {

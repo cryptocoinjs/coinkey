@@ -9,6 +9,7 @@ next version / 2014-06-xx
 * upgraded `"secure-random": "~0.2.0"` to `"secure-random": "^1.0.0"`
 * removed `CoinKey.compressByDefault`, default is now `true`
 * removed ability for `CoinKey` constructor to generate random key when `bytes` aren't passed
+* removed `binstring` dev dep
 
 0.1.0 / 2014-03-10
 ------------------
