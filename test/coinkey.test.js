@@ -124,6 +124,27 @@ describe('CoinKey', function() {
         assert.equal(ck.publicAddress, dogecoin.publicAddressCompressed)
       })
     })
+  })
+
+  describe('+ createRandom()', function() {
+    describe('> when no versions', function() {
+      it('should create a random Bitcoin CoinKey', function() {
+        var ck = CoinKey.createRandom()
+        assert(ck.compressed)
+        assert(ck.privateKey)
+      })
+    })
+
+    describe('> when versions', function() {
+      it('should create a random CoinKey with versions specified', function() {
+        var dogecoin = fixtures.valid.filter(function(f) { if (f.description.match(/bitcoin/)) return f })[0]
+        var ck = CoinKey.createRandom(dogecoin.versions)
+        assert(ck.compressed)
+        assert(ck.privateKey)
+        assert.equal(ck.versions.private, dogecoin.versions.private)
+        assert.equal(ck.versions.public, dogecoin.versions.public)
+      })
+    })
   }) 
 })
 

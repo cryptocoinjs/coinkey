@@ -12,6 +12,7 @@ next version / 2014-06-xx
 * removed `binstring` dev dep
 * added Travis CI
 * added Coveralls
+* added new class method `createRandom()`
 
 0.1.0 / 2014-03-10
 ------------------
