@@ -4,6 +4,7 @@ next version / 2014-06-xx
 * removed semicolons per http://cryptocoinjs.com/about/contributing/#semicolons
 * removed `terst` and moved to `assert`
 * upgrade `"eckey": "~0.4.0"` to `"eckey": "^0.6.0"`
+* deleted fields `pubKeyHash` and alias `publicHash` because they're now present in inherited `ECKey`
 
 0.1.0 / 2014-03-10
 ------------------

@@ -94,28 +94,6 @@ describe('CoinKey', function() {
     })
   })
 
-  describe('- publicHash', function() {
-    describe('> when not compressed', function() {
-      it('should return the 160 bit hash of the uncompressed public key', function() {
-        var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd"
-        var hash160Hex = "3c176e659bea0f29a3e9bf7880c112b1b31b4dc8"
-        var key = new CoinKey(conv(privateKeyHex, {in: 'hex', out: 'bytes'}), false)
-        assert.equal(key.publicHash.toString('hex'), hash160Hex)
-        assert.equal(key.pubKeyHash.toString('hex'), hash160Hex)
-      })
-    })
-
-    describe('> when compressed', function() {
-      it('should return the 160 bit hash of the compressed public key', function() {
-        var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd"
-        var hash160Hex = "a1c2f92a9dacbd2991c3897724a93f338e44bdc1"
-        var key = new CoinKey(conv(privateKeyHex, {in: 'hex', out: 'bytes'}), true)
-        assert.equal(key.publicHash.toString('hex'), hash160Hex)
-        assert.equal(key.pubKeyHash.toString('hex'), hash160Hex)
-      })
-    })
-  })
-
   describe('- publicAddress', function() {
     describe('> when Bitcoin', function() {
       describe('> when not compressed', function() {
