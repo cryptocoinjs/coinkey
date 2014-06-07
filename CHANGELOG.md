@@ -10,6 +10,8 @@ next version / 2014-06-xx
 * removed `CoinKey.compressByDefault`, default is now `true`
 * removed ability for `CoinKey` constructor to generate random key when `bytes` aren't passed
 * removed `binstring` dev dep
+* added Travis CI
+* added Coveralls
 
 0.1.0 / 2014-03-10
 ------------------
