@@ -2,6 +2,18 @@
 	"valid": [
     {
       "privateKey": "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd",
+      "privateWif": "5Hx15HFGyep2CfPxsJKe2fXJsCVn5DEiyoeGGF6JZjGbTRnqfiD",
+      "privateWifCompressed": "KwomKti1X3tYJUUMb1TGSM2mrZk1wb1aHisUNHCQXTZq5auC2qc3",
+      "publicAddress": "16UjcYNBG9GTK4uq2f7yYEbuifqCzoLMGS",
+      "publidAddressCompressed": "1FkKMsKNJqWSDvTvETqcCeHcUQQ64kSC6s",
+      "description": "bitcoin"
+    },
+    {
+      "privateKey": "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd",
+      "privateWif": "6uFjYQnot5Gtg3HpP87bp4JUpg4FH1gkkV3RyS7LHBbD9Hpt1na",
+      "privateWifCompressed": "T3e2me1BvRs95K7E8eQ8eha9oRPL1g2U6vmjE5px6RjzbUTvKZsf",
+      "versions": {"private": 176, "public": 48},
+      "description": "litecoin"
     }
   ]
 }

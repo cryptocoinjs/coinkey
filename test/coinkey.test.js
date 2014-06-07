@@ -2,6 +2,8 @@ var assert = require('assert')
 var CoinKey = require('../')
 var secureRandom = require('secure-random')
 
+var fixtures = require('./fixtures/coinkey')
+
 describe('CoinKey', function() {
   
 })
@@ -60,17 +62,17 @@ describe('CoinKey', function() {
     describe('> when Bitcoin', function() {
       describe('> when not compressed', function() {
         it('should return the uncompressed Bitcoin address', function() {
-          var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd"
+          var privateKeyHex = fixtures.valid[0].privateKey
           var ck = new CoinKey(new Buffer(privateKeyHex, 'hex'), false)
-          assert.equal(ck.privateWif, '5Hx15HFGyep2CfPxsJKe2fXJsCVn5DEiyoeGGF6JZjGbTRnqfiD')
+          assert.equal(ck.privateWif, fixtures.valid[0].privateWif)
         })
       })
 
       describe('> when compressed', function() {
         it('should return the compressed Bitcoin address', function() {
-          var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd"
+          var privateKeyHex = fixtures.valid[0].privateKey
           var ck = new CoinKey(new Buffer(privateKeyHex, 'hex'), true)
-          assert.equal(ck.privateWif, 'KwomKti1X3tYJUUMb1TGSM2mrZk1wb1aHisUNHCQXTZq5auC2qc3')
+          assert.equal(ck.privateWif, fixtures.valid[0].privateWifCompressed)
         })
       })
     })
@@ -78,17 +80,17 @@ describe('CoinKey', function() {
     describe('> when Litecoin', function() {
       describe('> when not compressed', function() {
         it('should return the uncompressed Bitcoin address', function() {
-          var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd"
-          var ck = new CoinKey(new Buffer(privateKeyHex, 'hex'), false, {private: 0xB0, public: 0x30})
-          assert.equal(ck.privateWif, '6uFjYQnot5Gtg3HpP87bp4JUpg4FH1gkkV3RyS7LHBbD9Hpt1na')
+          var privateKeyHex = fixtures.valid[0].privateKey
+          var ck = new CoinKey(new Buffer(privateKeyHex, 'hex'), false, fixtures.valid[1].versions)
+          assert.equal(ck.privateWif, fixtures.valid[1].privateWif)
         })
       })
 
       describe('> when compressed', function() {
         it('should return the compressed Bitcoin address', function() {
-          var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd"
-          var ck = new CoinKey(new Buffer(privateKeyHex, 'hex'), true, {private: 0xB0, public: 0x30})
-          assert.equal(ck.privateWif, 'T3e2me1BvRs95K7E8eQ8eha9oRPL1g2U6vmjE5px6RjzbUTvKZsf')
+          var privateKeyHex = fixtures.valid[0].privateKey
+          var ck = new CoinKey(new Buffer(privateKeyHex, 'hex'), true, fixtures.valid[1].versions)
+          assert.equal(ck.privateWif, fixtures.valid[1].privateWifCompressed)
         })
       })
     })
@@ -98,7 +100,7 @@ describe('CoinKey', function() {
     describe('> when Bitcoin', function() {
       describe('> when not compressed', function() {
         it('should return the uncompressed Bitcoin address', function() {
-          var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd"
+          var privateKeyHex = fixtures.valid[0].privateKey
           var ck = new CoinKey(new Buffer(privateKeyHex, 'hex'), false)
           assert.equal(ck.publicAddress, '16UjcYNBG9GTK4uq2f7yYEbuifqCzoLMGS')
         })
@@ -106,7 +108,7 @@ describe('CoinKey', function() {
 
       describe('> when compressed', function() {
         it('should return the compressed Bitcoin address', function() {
-          var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd"
+          var privateKeyHex = fixtures.valid[0].privateKey
           var ck = new CoinKey(new Buffer(privateKeyHex, 'hex'), true)
           assert.equal(ck.publicAddress, '1FkKMsKNJqWSDvTvETqcCeHcUQQ64kSC6s')
         })
@@ -116,7 +118,7 @@ describe('CoinKey', function() {
     describe('> when Litecoin', function() {
       describe('> when not compressed', function() {
         it('should return the uncompressed Bitcoin address', function() {
-          var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd"
+          var privateKeyHex = fixtures.valid[0].privateKey
           var ck = new CoinKey(new Buffer(privateKeyHex, 'hex'), false, {private: 0xB0, public: 0x30})
           assert.equal(ck.publicAddress, 'LQhgskg1LoWWZsbzCo7GpFffvtCV8Z5GKZ')
         })
@@ -124,7 +126,7 @@ describe('CoinKey', function() {
 
       describe('> when compressed', function() {
         it('should return the compressed Bitcoin address', function() {
-          var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd"
+          var privateKeyHex = fixtures.valid[0].privateKey
           var ck = new CoinKey(new Buffer(privateKeyHex, 'hex'), true, {private: 0xB0, public: 0x30})
           assert.equal(ck.publicAddress, 'LZyGd5dCPVkVUjA5QbpuUfMNgcmNDLjswH')
         })
@@ -135,7 +137,7 @@ describe('CoinKey', function() {
   describe('- versions', function() {
     describe('> when object changes', function() {
       it('should change the wif and public address', function() {
-        var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd"
+        var privateKeyHex = fixtures.valid[0].privateKey
         var ck = new CoinKey(new Buffer(privateKeyHex, 'hex'), true)
 
         assert.equal(ck.privateWif, 'KwomKti1X3tYJUUMb1TGSM2mrZk1wb1aHisUNHCQXTZq5auC2qc3')
@@ -151,7 +153,7 @@ describe('CoinKey', function() {
 
     describe('> when field changes', function() {
       it('should change the wif and public address', function() {
-        var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd"
+        var privateKeyHex = fixtures.valid[0].privateKey
         var ck = new CoinKey(new Buffer(privateKeyHex, 'hex'), true)
 
         assert.equal(ck.privateWif, 'KwomKti1X3tYJUUMb1TGSM2mrZk1wb1aHisUNHCQXTZq5auC2qc3')
@@ -170,7 +172,7 @@ describe('CoinKey', function() {
 
   describe('- toString()', function() {
     it('should return the hex string of the privateKey', function() {
-      var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd"
+      var privateKeyHex = fixtures.valid[0].privateKey
       var ck = new CoinKey(new Buffer(privateKeyHex, 'hex'))
       assert.equal(ck.toString(), ck.privateKey.toString('hex'))
     })
@@ -183,7 +185,7 @@ describe('CoinKey', function() {
         it('should create a new compressed CoinKey', function() {
           var ck = CoinKey.fromWif('KwomKti1X3tYJUUMb1TGSM2mrZk1wb1aHisUNHCQXTZq5auC2qc3')
           assert.equal(ck.compressed, true)
-          assert.equal(ck.privateKey.toString('hex'), "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd")
+          assert.equal(ck.privateKey.toString('hex'), fixtures.valid[0].privateKey)
           assert.equal(ck.publicAddress, "1FkKMsKNJqWSDvTvETqcCeHcUQQ64kSC6s")
         })
       })
@@ -192,7 +194,7 @@ describe('CoinKey', function() {
         it('should create a new compressed CoinKey', function() {
           var ck = CoinKey.fromWif('5Hx15HFGyep2CfPxsJKe2fXJsCVn5DEiyoeGGF6JZjGbTRnqfiD')
           assert.equal(ck.compressed, false)
-          assert.equal(ck.privateKey.toString('hex'), "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd")
+          assert.equal(ck.privateKey.toString('hex'), fixtures.valid[0].privateKey)
           assert.equal(ck.publicAddress, '16UjcYNBG9GTK4uq2f7yYEbuifqCzoLMGS')
         })
       })
@@ -203,7 +205,7 @@ describe('CoinKey', function() {
         it('should create a new compressed CoinKey', function() {
           var ck = CoinKey.fromWif('TdxZ4HSnd3XgyPAJLwyhqPx6oABwMM7NkhGFTuDL4LkqioDbkZWj')
           assert.equal(ck.compressed, true)
-          assert.equal(ck.privateKey.toString('hex'), "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd")
+          assert.equal(ck.privateKey.toString('hex'), fixtures.valid[0].privateKey)
           assert.equal(ck.publicAddress, "NBKgZWpMEDbzkTiRWHABRASXCdo8zWM8qC")
         })
       })
@@ -212,7 +214,7 @@ describe('CoinKey', function() {
         it('should create a new compressed CoinKey', function() {
           var ck = CoinKey.fromWif('732iFLawHmyoDKce1SbbdLhaV8X7sq4Fu3Krx2rvFocm7qNwwiQ')
           assert.equal(ck.compressed, false)
-          assert.equal(ck.privateKey.toString('hex'), "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd")
+          assert.equal(ck.privateKey.toString('hex'), fixtures.valid[0].privateKey)
           assert.equal(ck.publicAddress, 'N246pBsABXN1qcALJUSYkkkpSuEG3KTTGR')
         })
       })
