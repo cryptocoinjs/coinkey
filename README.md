@@ -12,3 +12,4 @@ in both Node.js and the browser.
 Official documentation:
 
 http://cryptocoinjs.com/modules/currency/coinkey/
+
