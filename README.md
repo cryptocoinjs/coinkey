@@ -9,6 +9,7 @@ coinkey
 JavaScript component for private keys, public keys, and addresess for crypto currencies such as Bitcoin, Litecoin, and Dogecoin. Works
 in both Node.js and the browser.
 
-Official documenation:
+Official documentation:
 
 http://cryptocoinjs.com/modules/currency/coinkey/
+
