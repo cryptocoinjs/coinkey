@@ -4,3 +4,5 @@ test/
 component.json
 bower.json
 .travis.yml
+Makefile
+.min-wd
