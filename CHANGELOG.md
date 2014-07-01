@@ -1,3 +1,8 @@
+1.2.0 / 2014-06-30
+------------------
+* upgraded `"coinstring": "^1.0.1"` to `"coinstring": "^2.0.0"`
+* added `crypto-browserify` for Browserify build and `make browser-test`
+
 1.1.0 / 2014-06-11
 ------------------
 * upgraded `"eckey": "^0.6.0"` to `"eckey": "^0.7.0"`
