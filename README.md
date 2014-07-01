@@ -13,3 +13,4 @@ Official documentation:
 
 http://cryptocoinjs.com/modules/currency/coinkey/
 
+
