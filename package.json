@@ -26,7 +26,7 @@
   "dependencies": {
     "coinstring": "^2.0.0",
     "secure-random": "^1.0.0",
-    "eckey": "^0.7.0"
+    "eckey": "^0.8.0"
   },
   "scripts": {
     "test": "mocha --ui bdd",

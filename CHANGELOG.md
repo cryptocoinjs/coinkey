@@ -1,3 +1,7 @@
+1.3.0 / 2014-09-29
+------------------
+* upgraded `"eckey": "^0.7.0"` to `"eckey": "^0.8.0"` (which upgraded ecurve from 0.8.0 to 1.0.0; removed superflous params)
+
 1.2.0 / 2014-06-30
 ------------------
 * upgraded `"coinstring": "^1.0.1"` to `"coinstring": "^2.0.0"`
