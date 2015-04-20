@@ -157,4 +157,12 @@ describe('CoinKey', function () {
       })
     })
   })
+
+  describe('+ addressToHash()', function () {
+    it('should convert an address to the hash', function () {
+      assert.equal(CoinKey.addressToHash('1FkKMsKNJqWSDvTvETqcCeHcUQQ64kSC6s').toString('hex'), 'a1c2f92a9dacbd2991c3897724a93f338e44bdc1')
+      assert.equal(CoinKey.addressToHash('NBKgZWpMEDbzkTiRWHABRASXCdo8zWM8qC').toString('hex'), 'a1c2f92a9dacbd2991c3897724a93f338e44bdc1')
+      assert.equal(CoinKey.addressToHash('3NukJ6fYZJ5Kk8bPjycAnruZkE5Q7UW7i8').toString('hex'), 'e8c300c87986efa84c37c0519929019ef86eb5b4')
+    })
+  })
 })
