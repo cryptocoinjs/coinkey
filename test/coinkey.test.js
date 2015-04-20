@@ -102,7 +102,7 @@ describe('CoinKey', function() {
 
         assert.equal(ck.privateWif, dogecoin.privateWifCompressed)
         assert.equal(ck.publicAddress, dogecoin.publicAddressCompressed)
-    
+
       })
     })
 
@@ -144,6 +144,6 @@ describe('CoinKey', function() {
         assert.equal(ck.versions.public, dogecoin.versions.public)
       })
     })
-  }) 
+  })
 })
 
