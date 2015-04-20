@@ -16,7 +16,7 @@
     "istanbul": "^0.2.10",
     "mocha": "*",
     "mocha-lcov-reporter": "0.0.1",
-    "mochify": "2.1.1",
+    "mochify": "^2.8.1",
     "standard": "*"
   },
   "repository": {
