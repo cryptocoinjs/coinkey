@@ -1,3 +1,10 @@
+1.4.0 / 2015-04-20
+------------------
+- JavaScript Standard Style
+- support [coininfo](https://github.com/cryptocoinjs/coininfo) objects without having to specify `versions`
+- added method `addressToHash()`
+- brought back `README` from http://cryptocoinjs.com
+
 1.3.0 / 2014-09-29
 ------------------
 * upgraded `"eckey": "^0.7.0"` to `"eckey": "^0.8.0"` (which upgraded ecurve from 0.8.0 to 1.0.0; removed superflous params)
