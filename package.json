@@ -32,6 +32,7 @@
     "secure-random": "^1.0.0"
   },
   "scripts": {
+    "browser-test": "mochify --wd -R spec",
     "test": "standard && mocha",
     "unit": "./node_modules/.bin/mocha",
     "coverage": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --reporter list test/*.js",
