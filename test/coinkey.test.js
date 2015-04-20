@@ -1,12 +1,13 @@
 var assert = require('assert')
-var CoinKey = require('../')
+var coininfo = require('coininfo')
 var secureRandom = require('secure-random')
+var CoinKey = require('../')
 var fixtures = require('./fixtures/coinkey')
 
 /* global describe, it */
 
 describe('CoinKey', function () {
-  describe('- CoinKey()', function () {
+  describe('constructor', function () {
     describe('> when private key passed', function () {
       it('should return an instance of CoinKey with fields set', function () {
         var privateKey = secureRandom.randomBuffer(32)
@@ -30,6 +31,15 @@ describe('CoinKey', function () {
         assert.throws(function () { new CoinKey() }, /must be arrayish/)
         assert.throws(function () { new CoinKey({public: 0, private: 0x80}) }, /must be arrayish/)
         /* eslint-enable no-new */
+      })
+    })
+
+    describe('> when a coininfo object is passed for versions', function () {
+      it('should return the proper address / WIF', function () {
+        var dogecoin = fixtures.valid.filter(function (f) { if (f.description.match(/dogecoin/)) return f})[0]
+        var ck = new CoinKey(new Buffer(dogecoin.privateKey, 'hex'), coininfo('DOGE'))
+        assert.equal(ck.privateWif, dogecoin.privateWifCompressed)
+        assert.equal(ck.publicAddress, dogecoin.publicAddressCompressed)
       })
     })
   })

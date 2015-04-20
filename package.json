@@ -11,12 +11,13 @@
     "curve"
   ],
   "devDependencies": {
-    "mocha": "~1.17.1",
-    "mochify": "^1.1.3",
-    "istanbul": "^0.2.10",
-    "coveralls": "^2.10.0",
-    "mocha-lcov-reporter": "0.0.1",
     "browserify": "^5.12.1",
+    "coininfo": "^0.3.1",
+    "coveralls": "^2.10.0",
+    "istanbul": "^0.2.10",
+    "mocha": "~1.17.1",
+    "mocha-lcov-reporter": "0.0.1",
+    "mochify": "^1.1.3",
     "standard": "*"
   },
   "repository": {
