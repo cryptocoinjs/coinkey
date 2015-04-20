@@ -27,8 +27,8 @@ describe('CoinKey', function () {
     describe('> when no private key', function () {
       it('should throw an error', function () {
         /* eslint-disable no-new */
-        assert.throws(function () { new CoinKey() }, /pass a private key/)
-        assert.throws(function () { new CoinKey({public: 0, private: 0x80}) }, /pass a private key/)
+        assert.throws(function () { new CoinKey() }, /must be arrayish/)
+        assert.throws(function () { new CoinKey({public: 0, private: 0x80}) }, /must be arrayish/)
         /* eslint-enable no-new */
       })
     })
