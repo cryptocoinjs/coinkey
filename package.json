@@ -10,6 +10,7 @@
     "elliptical",
     "curve"
   ],
+  "license": "MIT",
   "devDependencies": {
     "coininfo": "^0.3.1",
     "coveralls": "^2.10.0",
