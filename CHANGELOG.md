@@ -1,3 +1,7 @@
+2.0.0 / 2016-04-27
+------------------
+- upgraded from [`ecurve`](https://www.npmjs.com/package/ecurve) to [`secp256k1`](https://www.npmjs.com/package/secp256k1) (via `eckey` upgrade).
+
 1.4.0 / 2015-04-20
 ------------------
 - JavaScript Standard Style
@@ -44,4 +48,3 @@
 0.0.1 / 2014-03-09
 ------------------
 * initial release
-
