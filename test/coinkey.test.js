@@ -83,14 +83,18 @@ describe('CoinKey', function () {
   describe('+ fromWif()', function () {
     fixtures.valid.forEach(function (f) {
       it('should return a new CoinKey ' + f.description, function () {
-        var ck = CoinKey.fromWif(f.privateWif)
+        // check if cointype is one where priv - pub is 0x80
+        // else version is expected to be explicitly passed
+        var standardCoin = f.versions.private - f.versions.public === 0x80
+
+        var ck = standardCoin ? CoinKey.fromWif(f.privateWif) : CoinKey.fromWif(f.privateWif, f.versions)
         assert.equal(ck.compressed, false)
         assert.equal(ck.versions.private, f.versions.private)
         assert.equal(ck.versions.public, f.versions.public)
         assert.equal(ck.privateKey.toString('hex'), f.privateKey)
         assert.equal(ck.publicAddress, f.publicAddress)
 
-        var ckCompressed = CoinKey.fromWif(f.privateWifCompressed)
+        var ckCompressed = standardCoin ? CoinKey.fromWif(f.privateWifCompressed) : CoinKey.fromWif(f.privateWifCompressed, f.versions)
         assert.equal(ckCompressed.compressed, true)
         assert.equal(ckCompressed.versions.private, f.versions.private)
         assert.equal(ckCompressed.versions.public, f.versions.public)

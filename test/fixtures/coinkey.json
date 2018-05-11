@@ -35,6 +35,15 @@
       "publicAddressCompressed": "NBKgZWpMEDbzkTiRWHABRASXCdo8zWM8qC",
       "versions": {"private": 180, "public": 52},
       "description": "namecoin"
+    },
+    {
+      "privateKey": "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd",
+      "privateWif": "5Hx15HFGyep2CfPxsJKe2fXJsCVn5DEiyoeGGF6JZjGbTRnqfiD",
+      "privateWifCompressed": "KwomKti1X3tYJUUMb1TGSM2mrZk1wb1aHisUNHCQXTZq5auC2qc3",
+      "publicAddress": "t1PMLcsnKEU43uhxiy5w6g3hpyL2HqtM3E2",
+      "publicAddressCompressed": "t1YcvNCjWHAJ2pZWpAtejLTPXj4bAoVja3b",
+      "versions": {"private": 128, "public": 7352},
+      "description": "zcash"
     }
   ]
 }
