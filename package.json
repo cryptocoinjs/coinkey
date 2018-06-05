@@ -1,6 +1,6 @@
 {
   "name": "coinkey",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "JavaScript component for private keys, public keys, and addresess for crypto currencies such as Bitcoin, Litecoin, and Dogecoin",
   "keywords": [
     "cryptography",

@@ -1,3 +1,8 @@
+3.0.0 / 2018-06-05
+------------------
+- Drop support for Node versions less than v6
+- Add support for ZCash and other coins with multibyte public versions
+
 2.0.0 / 2016-04-27
 ------------------
 - upgraded from [`ecurve`](https://www.npmjs.com/package/ecurve) to [`secp256k1`](https://www.npmjs.com/package/secp256k1) (via `eckey` upgrade).
