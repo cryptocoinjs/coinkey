@@ -19,8 +19,8 @@ describe('CoinKey', function () {
 
     describe('> when private key and versions', function () {
       it('should return an instance of CoinKey with versions', function () {
-        var dogecoin = fixtures.valid.filter(function (f) { if (f.description.match(/dogecoin/)) return f})[0]
-        var ck = new CoinKey(new Buffer(dogecoin.privateKey, 'hex'), dogecoin.versions)
+        var dogecoin = fixtures.valid.filter(function (f) { if (f.description.match(/dogecoin/)) return f })[0]
+        var ck = new CoinKey(Buffer.from(dogecoin.privateKey, 'hex'), dogecoin.versions)
         assert(ck.compressed)
       })
     })
@@ -36,8 +36,8 @@ describe('CoinKey', function () {
 
     describe('> when a coininfo object is passed for versions', function () {
       it('should return the proper address / WIF', function () {
-        var dogecoin = fixtures.valid.filter(function (f) { if (f.description.match(/dogecoin/)) return f})[0]
-        var ck = new CoinKey(new Buffer(dogecoin.privateKey, 'hex'), coininfo('DOGE'))
+        var dogecoin = fixtures.valid.filter(function (f) { if (f.description.match(/dogecoin/)) return f })[0]
+        var ck = new CoinKey(Buffer.from(dogecoin.privateKey, 'hex'), coininfo('DOGE'))
         assert.equal(ck.privateWif, dogecoin.privateWifCompressed)
         assert.equal(ck.publicAddress, dogecoin.publicAddressCompressed)
       })
@@ -47,10 +47,10 @@ describe('CoinKey', function () {
   describe('- privateWif', function () {
     fixtures.valid.forEach(function (f) {
       it('should return the proper wif for ' + f.description, function () {
-        var ck = new CoinKey(new Buffer(f.privateKey, 'hex'), f.versions)
+        var ck = new CoinKey(Buffer.from(f.privateKey, 'hex'), f.versions)
         ck.compressed = false
         assert.equal(ck.privateWif, f.privateWif)
-        var ckCompressed = new CoinKey(new Buffer(f.privateKey, 'hex'), f.versions)
+        var ckCompressed = new CoinKey(Buffer.from(f.privateKey, 'hex'), f.versions)
         assert.equal(ckCompressed.privateWif, f.privateWifCompressed)
       })
     })
@@ -59,10 +59,10 @@ describe('CoinKey', function () {
   describe('- publicAddress', function () {
     fixtures.valid.forEach(function (f) {
       it('should return the proper public address for ' + f.description, function () {
-        var ck = new CoinKey(new Buffer(f.privateKey, 'hex'), f.versions)
+        var ck = new CoinKey(Buffer.from(f.privateKey, 'hex'), f.versions)
         ck.compressed = false
         assert.equal(ck.publicAddress, f.publicAddress)
-        var ckCompressed = new CoinKey(new Buffer(f.privateKey, 'hex'), f.versions)
+        var ckCompressed = new CoinKey(Buffer.from(f.privateKey, 'hex'), f.versions)
         assert.equal(ckCompressed.publicAddress, f.publicAddressCompressed)
       })
     })
@@ -71,10 +71,10 @@ describe('CoinKey', function () {
   describe('- toString()', function () {
     fixtures.valid.forEach(function (f) {
       it('should return the string ' + f.description, function () {
-        var ck = new CoinKey(new Buffer(f.privateKey, 'hex'), f.versions)
+        var ck = new CoinKey(Buffer.from(f.privateKey, 'hex'), f.versions)
         ck.compressed = false
         assert.equal(ck.toString(), f.privateWif + ': ' + f.publicAddress)
-        var ckCompressed = new CoinKey(new Buffer(f.privateKey, 'hex'), f.versions)
+        var ckCompressed = new CoinKey(Buffer.from(f.privateKey, 'hex'), f.versions)
         assert.equal(ckCompressed.toString(), f.privateWifCompressed + ': ' + f.publicAddressCompressed)
       })
     })
@@ -110,7 +110,7 @@ describe('CoinKey', function () {
         var bitcoin = fixtures.valid.filter(function (f) { if (f.description.match(/bitcoin/)) return f })[0]
         var dogecoin = fixtures.valid.filter(function (f) { if (f.description.match(/bitcoin/)) return f })[0]
 
-        var ck = new CoinKey(new Buffer(bitcoin.privateKey, 'hex'))
+        var ck = new CoinKey(Buffer.from(bitcoin.privateKey, 'hex'))
         assert.equal(ck.privateWif, bitcoin.privateWifCompressed)
         assert.equal(ck.publicAddress, bitcoin.publicAddressCompressed)
 
@@ -118,7 +118,6 @@ describe('CoinKey', function () {
 
         assert.equal(ck.privateWif, dogecoin.privateWifCompressed)
         assert.equal(ck.publicAddress, dogecoin.publicAddressCompressed)
-
       })
     })
 
@@ -127,7 +126,7 @@ describe('CoinKey', function () {
         var bitcoin = fixtures.valid.filter(function (f) { if (f.description.match(/bitcoin/)) return f })[0]
         var dogecoin = fixtures.valid.filter(function (f) { if (f.description.match(/bitcoin/)) return f })[0]
 
-        var ck = new CoinKey(new Buffer(bitcoin.privateKey, 'hex'))
+        var ck = new CoinKey(Buffer.from(bitcoin.privateKey, 'hex'))
         assert.equal(ck.privateWif, bitcoin.privateWifCompressed)
         assert.equal(ck.publicAddress, bitcoin.publicAddressCompressed)
 
