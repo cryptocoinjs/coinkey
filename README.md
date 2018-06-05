@@ -16,7 +16,7 @@ Package Info
 - tests: [https://github.com/cryptocoinjs/coinkey/tree/master/test](https://github.com/cryptocoinjs/coinkey/tree/master/test)
 - issues: [https://github.com/cryptocoinjs/coinkey/issues](https://github.com/cryptocoinjs/coinkey/issues)
 - license: **MIT**
-- versioning: [http://semver-ftw.org](http://semver-ftw.org)
+- versioning: **SemVer**
 
 
 Installation
