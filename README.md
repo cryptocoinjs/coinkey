@@ -82,7 +82,7 @@ var ck = new CoinKey(new Buffer('1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774
 console.log(ck.publicAddress) // => 16UjcYNBG9GTK4uq2f7yYEbuifqCzoLMGS
 
 //change to Testnet
-ck.versions = ci('BTC-TEST')
+ck.versions = ci('BTC-TEST').versions
 
 console.log(ck.publicAddress) // => mkzgubTA5Ahi6BPSkE6MN9pEafRutznkMe
 ```
